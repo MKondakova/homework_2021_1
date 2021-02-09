@@ -4,7 +4,7 @@
  * @description getting nested property of an object
  * @param {object} object 
  * @param {string} properties - path to nested object property
- * @return {object|undefined} property value or undefined if it doesn`t exist
+ * @return {*} property value or undefined if it doesn`t exist
  */
 
 const get = (object, properties) => {
