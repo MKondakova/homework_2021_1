@@ -1,17 +1,16 @@
 'use strict';
 
 const get = (object, properties) => {
-	if (properties == null || object == null) {
+	if (typeof object !=='object' || !object || typeof properties !== 'string') {
 		return;
 	}
 	let propertiesList = properties.match(/(\.\w+)/g);
-	if (propertiesList === null) {
+	if (!propertiesList) {
 		return object;
 	}
 	propertiesList = propertiesList.map((str) => str.slice(1));
-	let result = object;
-	for (let i = 0; i < propertiesList.length && result !== undefined; i++) {
-		result = result[propertiesList[i]];
+	for (let i = 0; i < propertiesList.length && object !== undefined; i++) {
+		object = object[propertiesList[i]];
 	}
-	return result;
+	return object;
 };
