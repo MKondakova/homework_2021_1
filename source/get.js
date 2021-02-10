@@ -12,11 +12,8 @@ const get = (object, properties) => {
 		return;
 	}
 
-	let propertiesList = properties.match(/(\.\w+)/g);
-	if (!propertiesList) {
-		return object;
-	}
-	propertiesList = propertiesList.map((str) => str.slice(1));
+	let propertiesList = properties.split('.');
+	propertiesList = propertiesList.filter((value, index, array) => value.trim().length > 0)
 
 	for (let i = 0; i < propertiesList.length && object !== undefined; i++) {
 		object = object[propertiesList[i]];
