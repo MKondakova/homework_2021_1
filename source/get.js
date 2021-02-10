@@ -13,6 +13,7 @@ const get = (object, properties) => {
 	}
 
 	let propertiesList = properties.split('.');
+	propertiesList.shift();
 	propertiesList = propertiesList.filter((value, index, array) => value.trim().length > 0)
 
 	for (let i = 0; i < propertiesList.length && object !== undefined; i++) {
