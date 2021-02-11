@@ -14,7 +14,14 @@ const get = (object, properties) => {
 
 	let propertiesList = properties.split('.');
 	propertiesList.shift();
-	propertiesList = propertiesList.filter((value) => value.trim().length > 0)
+	propertiesList = propertiesList.filter(value => value.trim().length > 0);
+
+	propertiesList = propertiesList.map(value => {
+	 	if (value[0] ==='\'' && value[value.length - 1]==='\''){
+			 return value.slice(1, -1);
+		 }
+		 return value;
+	 })
 
 	for (let i = 0; i < propertiesList.length && object !== undefined; i++) {
 		object = object[propertiesList[i]];
