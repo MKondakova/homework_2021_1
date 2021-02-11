@@ -3,6 +3,7 @@
 QUnit.module('Тестируем функцию get', function () {
     QUnit.test('get работает правильно c объектами с существующими свойствами', function (assert) {
         const object = {
+            "":211,
             '': 12,
             '1\'\'':21,
             foo: 'bar',
@@ -14,6 +15,7 @@ QUnit.module('Тестируем функцию get', function () {
         };
 
         assert.strictEqual(get(object, '.\'\''), object['']);
+        assert.strictEqual(get(object, '.""'), object[""]);
         assert.strictEqual(get(object, '.1\'\''), object['1\'\'']);
         assert.strictEqual(get(object, '.foo'), object.foo);
         assert.strictEqual(get(object, '.deep.hested.field'), object.deep.hested.field);

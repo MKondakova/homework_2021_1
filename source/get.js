@@ -17,7 +17,8 @@ const get = (object, properties) => {
 	propertiesList = propertiesList.filter(value => value.trim().length > 0);
 
 	propertiesList = propertiesList.map(value => {
-	 	if (value[0] ==='\'' && value[value.length - 1]==='\''){
+		const quotes = ['\'', '"'];
+	 	if (quotes.includes(value[0]) && quotes.includes(value[value.length - 1])){
 			 return value.slice(1, -1);
 		 }
 		 return value;
