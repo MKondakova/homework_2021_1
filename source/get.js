@@ -12,17 +12,15 @@ const get = (object, properties) => {
 		return;
 	}
 
-	let propertiesList = properties.split('.');
-	propertiesList.shift();
-	propertiesList = propertiesList.filter(value => value.trim().length > 0);
-
-	propertiesList = propertiesList.map(value => {
-		const quotes = ['\'', '"'];
-	 	if (quotes.includes(value[0]) && quotes.includes(value[value.length - 1])){
-			 return value.slice(1, -1);
-		 }
-		 return value;
-	 })
+	let propertiesList = properties.split('.')
+		.filter((value, index) => value.trim().length > 0 && index > 0)
+		.map(value => {
+			const quotes = ['\'', '"'];
+	 		if (quotes.includes(value[0]) && quotes.includes(value[value.length - 1])){
+				return value.slice(1, -1);
+			}
+			return value;
+		});
 
 	for (let i = 0; i < propertiesList.length && object !== undefined; i++) {
 		object = object[propertiesList[i]];
