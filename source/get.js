@@ -12,7 +12,7 @@ const get = (object, properties) => {
 		return;
 	}
 
-	let propertiesList = properties.split('.')
+	const propertiesList = properties.split('.')
 		.filter((value, index) => value.trim().length > 0 && index > 0)
 		.map(value => {
 			const quotes = ['\'', '"'];
